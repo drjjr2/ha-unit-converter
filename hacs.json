@@ -1,6 +1,5 @@
 {
   "name": "Unit Converter",
   "render_readme": true,
-  "domains": ["unit_converter"],
   "homeassistant": "2024.1.0"
 }
