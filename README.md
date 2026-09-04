@@ -53,12 +53,20 @@ the integration's manifest.
 
 ## Exposing it to a conversation agent
 
-This integration registers a standard Home Assistant intent
-(`ConvertUnits`), so it's picked up the same way built-in intents are by any
-conversation agent that uses HA's Assist API tool list. Depending on the
-agent integration you're using, you may need to explicitly enable "native HA
-intents" or "Control Home Assistant" tools in its configuration — check its
-options if the tool doesn't show up as available after restart.
+As of v1.1, this integration registers its own `Unit Converter` LLM API —
+the same mechanism tool packs like `llm_intents` use for their "Search
+Services" / "Basic Utilities" groups. That means after install + restart, a
+new **"Unit Converter"** checkbox appears under **Tool Providers** in your
+conversation agent's configuration (alongside Assist, Search Services,
+Weather Forecast, etc). Enable it there.
+
+(v1.0 registered a plain HA intent instead, on the assumption that checking
+"Assist" would be enough to expose it. Confirmed by direct testing that this
+doesn't work — Home Assistant's built-in Assist API only forwards a fixed
+built-in intent set plus entity-control intents, not arbitrary custom ones.
+The plain intent registration is still present for potential future use with
+custom sentences, but it's not what a conversation agent picks up as a
+tool.)
 
 ## Usage
 
